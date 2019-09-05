@@ -1,0 +1,87 @@
+/*! K-Box reporter style. (c) OneOffTech 2019-present. */
+
+@tailwind base;
+
+a {
+    @apply no-underline;
+
+    background-image:linear-gradient(rgba(190, 227, 248, 0.5), rgba(144, 206, 244, 0.8));
+    background-size:100% 0.65em;
+    background-repeat:no-repeat;
+    background-position:left 0 bottom -40%;
+    transition: all 0.2s linear;
+}
+
+
+
+a:hover {
+    background-image:linear-gradient(rgba(190, 227, 248, 0.8), rgba(99, 179, 237, 0.8));
+}
+
+a:focus {
+    background-size:100% 100%;
+    background-image:linear-gradient(rgba(190, 227, 248, 0.8), rgba(99, 179, 237, 0.8));
+}
+
+.transition {
+    transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+
+@tailwind components;
+
+@tailwind utilities;
+
+@media print {
+    
+    .print-hidden {
+        display: none;
+    }
+    .page-break	{ 
+        display: block; 
+        page-break-before: always;
+    }
+
+    .page-break-prevent {
+        page-break-inside: avoid;
+    }
+
+    .print-link:link:after, .print-link:visited:after { content:" [" attr(href) "] "; }
+
+    .container {
+        @apply m-0 px-0 max-w-full;
+    }
+
+    .print-px-0 {
+        @apply px-0;
+    }
+    
+    .print-pt-8 {
+        @apply pt-8;
+    }
+
+    .print-w-1\/2 {
+        @apply w-1/2;
+    }
+
+    .print-w-full {
+        @apply w-full;
+    }
+    
+    .print-pr-8 {
+        @apply pr-8;
+    }
+
+    a {
+        @apply no-underline;
+    
+        background:none;
+    }
+}
+
+@media print and (color) {
+    * {
+       -webkit-print-color-adjust: exact;
+       print-color-adjust: exact;
+    }
+ }

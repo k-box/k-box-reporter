@@ -1,0 +1,35 @@
+#!/usr/bin/env php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+use KBox\Statistics\View\Blade;
+use Illuminate\Container\Container;
+use TightenCo\Jigsaw\File\ConfigFile;
+use Symfony\Component\Console\Application;
+use KBox\Statistics\Console\ProcessCommand;
+use KBox\Statistics\Console\DownloadAnalyticsCommand;
+
+// configuring the dependency container
+
+$container = new Container;
+
+$container->setInstance($container);
+
+$container->instance('cwd', getcwd());
+
+$container->bind('config', function ($c) {
+    return (new ConfigFile($c['cwd'] . '/config.php'))->config;
+});
+
+$container->bind('blade', function ($c) {
+    return new Blade($c['cwd'] . '/src/View/stub', $c['cwd'] .'/cache');
+});
+
+// creating the console application
+
+$app = new Application('OOT-Statistics', '0.1.0');
+
+$app->add(new DownloadAnalyticsCommand($container));
+$app->add(new ProcessCommand($container));
+
+$app->run();
