@@ -7,7 +7,7 @@ COPY --chown=php:php . /var/www/html
 
 RUN composer install --prefer-dist && \
     yarn && \
-    yarn production 
+    yarn prod 
 
 ## production image
 FROM nginx:1.20-alpine AS production-env
