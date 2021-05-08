@@ -1,16 +1,16 @@
 ## Build the website docker image
 
 ## builder image
-FROM edbizarro/gitlab-ci-pipeline-php:7.1 AS build-env
+FROM edbizarro/gitlab-ci-pipeline-php:7.4 AS build-env
 
 COPY --chown=php:php . /var/www/html
 
 RUN composer install --prefer-dist && \
     yarn && \
-    yarn production 
+    yarn prod 
 
 ## production image
-FROM nginx:1.17-alpine AS production-env
+FROM nginx:1.20-alpine AS production-env
 
 ENV LOCATION '/var/www/html'
 

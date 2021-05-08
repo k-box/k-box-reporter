@@ -1,0 +1,5 @@
+build_local/*
+build_production/*
+build_staging/*
+node_modules
+vendor

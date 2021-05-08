@@ -12,7 +12,7 @@ The K-Box reporter is made possible thanks to [Jigsaw](https://jigsaw.tighten.co
 **requirements**
 
 - [GIT](https://git-scm.com/)
-- PHP 7.1 (newer version might work too, but are not tested)
+- PHP 7.4 (newer version might work too, but are not tested)
 - [Composer](https://getcomposer.org/)
 - [Node JS](https://nodejs.org/en/)
 - [Yarn](https://yarnpkg.com/lang/en/)
